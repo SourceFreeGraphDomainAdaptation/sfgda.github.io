@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Research on Source Free Graph Domain Adaptation and Test-time Graph Domain Adaptation, featuring GALA and RNA methods for effective domain adaptation in graph neural networks without source data access.">
+  <meta name="keywords" content="Source Free Graph Domain Adaptation, Test-time Graph Domain Adaptation, Graph Neural Networks, Domain Adaptation, GALA, RNA, Graph Diffusion, Graph Alignment, Machine Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Source Free Graph Domain Adaptation | Test-time Graph Domain Adaptation: Recent Advanced Methods</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%234a90e2' d='M384 96c0-17.7-14.3-32-32-32H96C78.3 64 64 78.3 64 96v224c0 17.7 14.3 32 32 32h256c17.7 0 32-14.3 32-32V96zM96 96h256v224H96V96zM416 416c0-17.7-14.3-32-32-32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32h224c17.7 0 32-14.3 32-32z'/></svg>">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/leaderboard.css">
+
+  <!-- <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bulma.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script> -->
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+
+  <script src="./static/js/leaderboard_testmini.js"></script>
+  <script src="./data/results/output_folders.js" defer></script>
+  <script src="./data/results/model_scores.js" defer></script>
+
+  <script src="./visualizer/data/data_public.js" defer></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title is-bold">
+              GALA: Graph Diffusion-Based Alignment With Jigsaw for Source-Free Domain Adaptation
+            </h1>
+            <h2 class="subtitle is-3 publication-subtitle" style="color: #2ecc71; text-shadow: 1px 1px 2px rgba(46, 204, 113, 0.1);">
+              Data-centric Source-Free Graph Domain Adaptation
+            </h2>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="#">Junyu Luo</a><sup style="color:#6fbf73;">1</sup>,</span>
+              <span class="author-block">
+                <a href="#">Yiyang Gu</a><sup style="color:#6fbf73;">1</sup>,</span>
+              <span class="author-block">
+                <a href="#">Xiao Luo</a><sup style="color:#ed4b82;">2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Wei Ju</a><sup style="color:#6fbf73;">1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Zhiping Xiao</a><sup style="color:#ed4b82;">2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Yusheng Zhao</a><sup style="color:#6fbf73;">1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Jingyang Yuan</a><sup style="color:#6fbf73;">1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Ming Zhang</a><sup style="color:#6fbf73;">1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup style="color:#6fbf73;">1</sup>Peking University</span>
+              <span class="author-block"><sup style="color:#ed4b82;">2</sup>University of California, Los Angeles</span>
+              <div class="is-size-4 paper-block"><b style="color:#f41c1c">TPAMI 2024</b></div>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <!-- @PAN TODO: change links -->
+                  <a href="https://ieeexplore.ieee.org/document/10561561"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2410.16606/" class="external-link button is-normal is-rounded is-dark">
+                    <!-- <a href="https://lupantech.github.io/papers/arxiv23_mathvista.pdf"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="static/images/GALA_TPAMI24.pdf" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>PDF</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/luo-junyu/GALA" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Twitter Link. -->
+                <!-- BibTeX Link. -->
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" onclick="copyBibtex()">
+                    <span class="icon">
+                      <i class="fas fa-quote-right"></i>
+                    </span>
+                    <span>BibTeX</span>
+                  </a>
+                </span>
+                <script>
+                  function copyBibtex() {
+                    const bibtex = `@ARTICLE{gala2024,
+  author={Luo, Junyu and Gu, Yiyang and Luo, Xiao and Ju, Wei and Xiao, Zhiping and Zhao, Yusheng and Yuan, Jingyang and Zhang, Ming},
+  journal={ IEEE Transactions on Pattern Analysis & Machine Intelligence },
+  title={ GALA: Graph Diffusion-based Alignment with Jigsaw for Source-free Domain Adaptation },
+  year={2024},
+  volume={},
+  number={01},
+  ISSN={1939-3539},
+  pages={1-14},
+  doi={10.1109/TPAMI.2024.3416372},
+  month={June}
+}`;
+                    navigator.clipboard.writeText(bibtex);
+                    alert('BibTeX copied to clipboard!');
+                  }
+                </script>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="margin-top: -150px; margin-bottom: -100px;">
+      <div class="columns is-centered m-6">
+        <div class="column is-full has-text-centered content">
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/gala-fig2.png" alt="GALA Workflow" width="84%" />
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/gala-fig1.png" alt="GALA Motivation" width="44%" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container" style="margin-bottom: 2vh;">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">TLDR</h2>
+          <div class="content has-text-justified">
+            <p>
+              <span id="english-text">
+                GALA is a novel source-free graph domain adaptation method that uses graph diffusion models to reconstruct source-style graphs from target data, combined with a graph jigsaw strategy to enhance model robustness. The method effectively addresses domain shift and label scarcity challenges in graph neural networks without requiring access to source data during adaptation.
+                <img src="static/images/trans.png" onclick="toggleLanguage()" style="margin-left: 10px; width: 24px; height: 24px; cursor: pointer; vertical-align: middle;">
+              </span>
+              <span id="chinese-text" style="display: none;">
+                GALA 是一种创新的无源图域适应方法，它使用图扩散模型从目标数据重建源风格图，并结合图拼图策略来增强模型鲁棒性。该方法在不需要在适应过程中访问源数据的情况下，有效解决了图神经网络中的域偏移和标签稀缺挑战。
+                <img src="static/images/trans.png" onclick="toggleLanguage()" style="margin-left: 10px; width: 24px; height: 24px; cursor: pointer; vertical-align: middle;">
+              </span>
+            </p>
+          </div>
+
+          <script>
+            function toggleLanguage() {
+              const englishText = document.getElementById('english-text');
+              const chineseText = document.getElementById('chinese-text');
+              if (englishText.style.display === 'none') {
+                englishText.style.display = 'inline';
+                chineseText.style.display = 'none';
+              } else {
+                englishText.style.display = 'none';
+                chineseText.style.display = 'inline';
+              }
+            }
+          </script>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <!-- bibtex -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">BibTeX</h2>
+      <pre><code>@ARTICLE{gala2024,
+  author={Luo, Junyu and Gu, Yiyang and Luo, Xiao and Ju, Wei and Xiao, Zhiping and Zhao, Yusheng and Yuan, Jingyang and Zhang, Ming},
+  journal={ IEEE Transactions on Pattern Analysis & Machine Intelligence },
+  title={ GALA: Graph Diffusion-based Alignment with Jigsaw for Source-free Domain Adaptation },
+  year={2024},
+  volume={},
+  number={01},
+  ISSN={1939-3539},
+  pages={1-14},
+  doi={10.1109/TPAMI.2024.3416372},
+  month={June}
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Separator between papers -->
+  <div class="container is-max-desktop">
+    <div style="margin: 6rem 0;">
+      <hr style="background-color: #dbdbdb; height: 1px; margin: 2rem auto; width: 50%;">
+      <div class="has-text-centered">
+        <span style="background: white; padding: 0 20px; position: relative; top: -35px; color: #7a7a7a;">
+          <i class="fas fa-star"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+
+<!-- Paper 2 -->
+
+<!-- title: Rank and Align: Towards Effective Source-free Graph Domain Adaptation -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Rank and Align: Towards Effective Source-free Graph Domain Adaptation</h1>
+          <h2 class="subtitle is-3 publication-subtitle" style="color: #2ecc71; text-shadow: 1px 1px 2px rgba(46, 204, 113, 0.1);">
+            Ranking-based Source-Free Graph Domain Adaptation
+          </h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Junyu Luo<sup style="color:#6fbf73;">1</sup></span>,
+            <span class="author-block">Zhiping Xiao<sup style="color:#ed4b82;">2</sup></span>,
+            <span class="author-block">Yifan Wang<sup style="color:#4a90e2;">3</sup></span>,
+            <span class="author-block">Xiao Luo<sup style="color:#ed4b82;">2</sup></span>,
+            <span class="author-block">Jingyang Yuan<sup style="color:#6fbf73;">1</sup></span>,
+            <span class="author-block">Wei Ju<sup style="color:#6fbf73;">1</sup></span>,
+            <span class="author-block">Langechuan Liu<sup style="color:#f6c344;">4</sup></span>,
+            <span class="author-block">Ming Zhang<sup style="color:#6fbf73;">1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup style="color:#6fbf73;">1</sup>Peking University</span>
+            <span class="author-block"><sup style="color:#ed4b82;">2</sup>UCLA</span>
+            <span class="author-block"><sup style="color:#4a90e2;">3</sup>UIBE</span>
+            <span class="author-block"><sup style="color:#f6c344;">4</sup>Anker Innovations</span>
+          </div>
+
+          <div class="is-size-4 paper-block"><b style="color:#f41c1c">IJCAI 2024</b></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="column has-text-centered">
+      <div class="publication-links">
+        <!-- PDF Link. -->
+        <span class="link-block">
+          <!-- @PAN TODO: change links -->
+          <a href=https://www.ijcai.org/proceedings/2024/520
+            class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="fas fa-file-pdf"></i>
+            </span>
+            <span>Paper</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://arxiv.org/abs/2408.12185" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="ai ai-arxiv"></i>
+            </span>
+            <span>arXiv</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="static/images/RNA_IJCAI24.pdf" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="fas fa-file-pdf"></i>
+            </span>
+            <span>PDF</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a class="external-link button is-normal is-rounded is-dark" onclick="copyBibtex()">
+            <span class="icon">
+              <i class="fas fa-quote-right"></i>
+            </span>
+            <span>BibTeX</span>
+          </a>
+        </span>
+        <script>
+          function copyBibtex() {
+            const bibtex = `@inproceedings{rna2024,
+title = {Rank and Align: Towards Effective Source-free Graph Domain Adaptation},
+author = {Luo, Junyu and Xiao, Zhiping and Wang, Yifan and Luo, Xiao and Yuan, Jingyang and Ju, Wei and Liu, Langechuan and Zhang, Ming},
+booktitle = {Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence},
+pages = {4706--4714},
+year = {2024}
+}`;
+            navigator.clipboard.writeText(bibtex);
+            alert('BibTeX copied to clipboard!');
+          }
+        </script>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Add image carousel for Paper 2 -->
+  <section class="section">
+    <div class="container" style="margin-top: -150px; margin-bottom: -100px;">
+      <div class="columns is-centered m-6">
+        <div class="column is-full has-text-centered content">
+          <div id="results-carousel-2" class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/rna-fig1.png" alt="Rank and Align Overview" width="44%" />
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/rna-fig2.png" alt="Rank and Align Method" width="84%" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="margin-bottom: 2vh;">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">TLDR</h2>
+          <div class="content has-text-justified">
+            <p>
+              <span id="english-text-2">
+                RNA is a novel source-free graph domain adaptation method that combines spectral seriation for ranking graph similarities and harmonic graph alignment for effective knowledge transfer. The method addresses the challenges of label scarcity and domain shifts by leveraging robust pairwise rankings and extracting domain-invariant subgraphs, without requiring access to source domain data.
+                <img src="static/images/trans.png" onclick="toggleLanguage2()" style="margin-left: 10px; width: 24px; height: 24px; cursor: pointer; vertical-align: middle;">
+              </span>
+              <span id="chinese-text-2" style="display: none;">
+                RNA 是一种新颖的无源图域适应方法，它结合了用于图相似度排序的谱序列化和谐波图对齐技术，实现有效的知识迁移。该方法通过利用稳健的成对排序和提取域不变子图来解决标签稀缺和域偏移的挑战，无需访问源域数据。
+                <img src="static/images/trans.png" onclick="toggleLanguage2()" style="margin-left: 10px; width: 24px; height: 24px; cursor: pointer; vertical-align: middle;">
+              </span>
+            </p>
+          </div>
+
+          <script>
+            function toggleLanguage2() {
+              const englishText = document.getElementById('english-text-2');
+              const chineseText = document.getElementById('chinese-text-2');
+              if (englishText.style.display === 'none') {
+                englishText.style.display = 'inline';
+                chineseText.style.display = 'none';
+              } else {
+                englishText.style.display = 'none';
+                chineseText.style.display = 'inline';
+              }
+            }
+          </script>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX2">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">BibTeX</h2>
+      <pre><code>@inproceedings{rna2024,
+  title = {Rank and Align: Towards Effective Source-free Graph Domain Adaptation},
+  author = {Luo, Junyu and Xiao, Zhiping and Wang, Yifan and Luo, Xiao and Yuan, Jingyang and Ju, Wei and Liu, Langechuan and Zhang, Ming},
+  booktitle = {Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence},
+  pages = {4706--4714},
+  year = {2024}
+}</code></pre>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="section" id="org-banners" style="display:flex">
+      <a href="https://www.pku.edu.cn/" target="_blank" rel="external">
+        <img class="center-block org-banner" src="static/images/pku.png">
+      </a>
+      <a href="https://www.ucla.edu/" target="_blank" rel="external">
+        <img class="center-block org-banner" src="static/images/ucla.png">
+      </a>
+    </div>
+  </section>
+
+  
+  <footer class="footer">
+    <!-- <div class="container"> -->
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is website adapted from <a href="https://nerfies.github.io/">Nerfies</a> and <a
+              href="https://mathvista.github.io/">MathVista</a> and <a href="https://github.com/CLUES-LLMDataQuality/CLUES-LLMDataQuality.github.io">CLUES</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </footer>
+
+</body>
+
+</html>
